@@ -1,6 +1,7 @@
 package com.bridgeLabz.employeepayrollapp.controllers;
 
 import com.bridgeLabz.employeepayrollapp.dto.EmployeePayrollDto;
+import com.bridgeLabz.employeepayrollapp.service.EmployeeServices;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/employeepayrollservice")
 public class EmployeePayrollController {
+    EmployeeServices employeeServices;
+
+    public EmployeePayrollController(EmployeeServices employeeServices) {
+        this.employeeServices = employeeServices;
+    }
+
     // Get method to get a employee data
     @GetMapping(value = {"", "/", "get"})
     public ResponseEntity<String> getEmployeePayrollData(){
