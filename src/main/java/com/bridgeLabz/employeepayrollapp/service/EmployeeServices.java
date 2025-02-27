@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class EmployeeServices {
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public EmployeeServices(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
@@ -33,7 +33,7 @@ public class EmployeeServices {
         return "Saved with id: " + savedEmployee.getId();
     }
 
-    // Method to update a Employee data
+    // Method to update an Employee's data
     public String updateEmployee(Employee employee, Long id) {
         employeeRepository.findById(id).map(employee1 -> {
             employee1.setName(employee.getName());
@@ -43,7 +43,7 @@ public class EmployeeServices {
         return "Employee Record Updated Successfully.";
     }
 
-    // Method to delete a employee record
+    // Method to delete an employee's record
     public String deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
         return "Employee Record Deleted Successfully.";
