@@ -35,7 +35,7 @@ public class EmployeeServices {
 
     // Method to update an Employee's data
     public String updateEmployee(Employee employee, Long id) {
-        employeeRepository.findById(id).map(employee1 -> {
+        Optional<Employee> newEmployee = employeeRepository.findById(id).map(employee1 -> {
             employee1.setName(employee.getName());
             employee1.setSalary(employee.getSalary());
             return employeeRepository.save(employee1);
