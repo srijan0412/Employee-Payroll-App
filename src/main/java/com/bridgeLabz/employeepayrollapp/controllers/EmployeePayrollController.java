@@ -33,9 +33,9 @@ public class EmployeePayrollController {
 
     // Get Method to get employee Data with id
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<EmployeePayrollDto>> getEmployeePayrollDataById(@PathVariable Long id){
+    public ResponseEntity<EmployeePayrollDto> getEmployeePayrollDataById(@PathVariable Long id){
         log.info("GET Request - Retrieve employee details by Employee ID.");
-        return new ResponseEntity<Optional<EmployeePayrollDto>>(employeeServices.retrieveEmployeeDataById(id), HttpStatus.OK);
+        return new ResponseEntity<EmployeePayrollDto>(employeeServices.retrieveEmployeeDataById(id), HttpStatus.OK);
     }
 
     // Post Method to create a new employee payroll data

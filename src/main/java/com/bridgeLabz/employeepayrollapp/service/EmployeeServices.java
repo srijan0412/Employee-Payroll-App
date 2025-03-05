@@ -1,6 +1,7 @@
 package com.bridgeLabz.employeepayrollapp.service;
 
 import com.bridgeLabz.employeepayrollapp.dto.EmployeePayrollDto;
+import com.bridgeLabz.employeepayrollapp.exception.EmployeeNotFoundException;
 import com.bridgeLabz.employeepayrollapp.model.Employee;
 import com.bridgeLabz.employeepayrollapp.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,10 @@ public class EmployeeServices {
     }
 
     // Method to retrieve data from the repository with the help of id
-    public Optional<EmployeePayrollDto> retrieveEmployeeDataById(Long id) {
+    public EmployeePayrollDto retrieveEmployeeDataById(Long id) {
         return employeeRepository.findById(id)
-                .map(employee -> new EmployeePayrollDto(employee.getName(), employee.getSalary()));
+                .map(employee -> new EmployeePayrollDto(employee.getName(), employee.getSalary()))
+                    .orElseThrow(() -> new EmployeeNotFoundException("Employee with ID " + id + " not found"));
     }
 
     // Get Method to get all employee records
