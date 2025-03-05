@@ -3,6 +3,7 @@ package com.bridgeLabz.employeepayrollapp.controllers;
 import com.bridgeLabz.employeepayrollapp.dto.EmployeePayrollDto;
 import com.bridgeLabz.employeepayrollapp.model.Employee;
 import com.bridgeLabz.employeepayrollapp.service.EmployeeServices;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class EmployeePayrollController {
 
     // Post Method to create a new employee payroll data
     @PostMapping("/create")
-    public ResponseEntity<String> createNewEmployeePayrollData(@RequestBody Employee employee) {
+    public ResponseEntity<String> createNewEmployeePayrollData(@Valid @RequestBody Employee employee) {
         log.info("POST Request - Add a new Employee Record.");
         return new ResponseEntity<String>(employeeServices.addANewEmployee(employee) , HttpStatus.OK);
     }

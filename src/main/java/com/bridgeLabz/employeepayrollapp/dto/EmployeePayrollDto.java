@@ -1,6 +1,8 @@
 package com.bridgeLabz.employeepayrollapp.dto;
 
 import com.bridgeLabz.employeepayrollapp.controllers.EmployeePayrollController;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 @Getter @Setter
